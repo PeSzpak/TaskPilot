@@ -35,18 +35,45 @@ function App() {
     setTaskToUpdate(task)
   }
 
+  const updateTask = (id: number, title: string, difficulty: number) => {
+    const updateTask: ITask = { id, title, difficulty }
+
+    const updatedItems = taskList.map((task) => {
+      return task.id === updateTask.id ? updateTask : task
+    })
+
+    setTaskList(updatedItems)
+
+    hideOrShowModal(false)
+  }
+
   return (
     <div>
-      <Modal children={<TaskForm btnText='Editar Tarefa' taskList={taskList} task={taskToUpdate} />} />
+      <Modal children={
+        <TaskForm btnText='Editar Tarefa'
+          taskList={taskList}
+          task={taskToUpdate}
+          handleUpdate={updateTask}
+        />
+      }
+      />
       <Header />
       <main className={styles.main}>
         <div>
           <h2>O que você vai fazer?</h2>
-          <TaskForm btnText='Criar Tarefa' taskList={taskList} setTaskList={setTaskList} />
+          <TaskForm
+            btnText='Criar Tarefa'
+            taskList={taskList}
+            setTaskList={setTaskList}
+          />
         </div>
         <div>
           <h2>Suas Tarefas:</h2>
-          <TaskList taskList={taskList} handleDelete={deleteTask} handleEdit={editTask} />
+          <TaskList
+            taskList={taskList}
+            handleDelete={deleteTask}
+            handleEdit={editTask}
+          />
         </div>
       </main>
       <Footer />
