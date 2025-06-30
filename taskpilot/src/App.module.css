@@ -1,9 +1,29 @@
-.main {
-    min-height: 60vh;
-    text-align: center;
-    padding: 2em;
-}
-
-main h2 {
-    margin-bottom: 0.8em;
-}
+.appContainer {
+    background-color: #0f0f0f;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .main {
+    flex: 1;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+  
+  h2 {
+    color: #ff3c38;
+  }
+  
+  .formSection,
+  .tasksSection {
+    background-color: #141414;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 60, 56, 0.15);
+  }
+  

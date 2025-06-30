@@ -1,6 +1,16 @@
 .header {
-    background-color: #282c34;
-    color: #61dafb;
+    background-color: #111111; 
+    color: #ff3c38;
     text-align: center;
-    padding: 1em;
-}
+    padding: 2rem 1rem;
+    border-bottom: 2px solid #ff3c38;
+    box-shadow: 0 2px 8px rgba(255, 60, 56, 0.2);
+  }
+  
+  .header h1 {
+    margin: 0;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  

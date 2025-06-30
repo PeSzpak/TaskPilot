@@ -9,7 +9,7 @@ type Props = {
   handleUpdate?(id: number, title: string, difficulty: number): void
 }
 
-const TaskForm = ({ btnText, taskList, setTaskList, task, handleUpdate}: Props) => {
+const TaskForm = ({ btnText, taskList, setTaskList, task, handleUpdate }: Props) => {
 
   const [id, setId] = useState<number>(0)
   const [title, setTitle] = useState<string>("")
@@ -17,35 +17,35 @@ const TaskForm = ({ btnText, taskList, setTaskList, task, handleUpdate}: Props) 
 
   useEffect(() => {
 
-    if(task) {
+    if (task) {
       setId(task.id)
       setTitle(task.title)
       setDifficulty(task.difficulty)
     }
 
-  }, [task])
+  }, [task?.id])
 
   const addTaskHandle = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-      if(handleUpdate) {
-        handleUpdate(id, title, difficulty)
-      }else {
-        
-    const id = Math.floor(Math.random() * 1000)
+    if (handleUpdate) {
+      handleUpdate(id, title, difficulty)
+    } else {
 
-    const newTask: ITask = {id, title, difficulty}
+      const id = Math.floor(Math.random() * 1000)
 
-    setTaskList!([...taskList, newTask])
+      const newTask: ITask = { id, title, difficulty }
 
-    setTitle("")
-    setDifficulty(0)
-      }
+      setTaskList!([...taskList, newTask])
+
+      setTitle("")
+      setDifficulty(0)
+    }
   }
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if(e.target.name === 'title') {
+    if (e.target.name === 'title') {
       setTitle(e.target.value)
-    }else {
+    } else {
       setDifficulty(parseInt(e.target.value))
     }
   }
@@ -55,11 +55,11 @@ const TaskForm = ({ btnText, taskList, setTaskList, task, handleUpdate}: Props) 
   return (<form onSubmit={addTaskHandle} className={styles.form}>
     <div className={styles.input_container}>
       <label htmlFor="title">Título:</label>
-      <input type="text" name='title' placeholder='Título da Tarefa' onChange={handleChange} value={title}/>
+      <input type="text" name='title' placeholder='Título da Tarefa' onChange={handleChange} value={title} />
     </div>
     <div className={styles.input_container}>
       <label htmlFor="difficulty">Dificuldade</label>
-      <input type="text" name='difficulty' placeholder='Dificuldade da Tarefa' onChange={handleChange} value={difficulty}/>
+      <input type="number" name="difficulty" placeholder="Dificuldade da Tarefa" onChange={handleChange} value={difficulty}/>
     </div>
     <input type="submit" value={btnText} />
   </form>
